@@ -1,0 +1,38 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-manager
+          uri: lb://user-manager
+          predicates:
+            - Path=/user-manager/**
+          filters:
+            - RewritePath=/user-manager/(?<segment>.*), /$\{segment}
+
+        - id: mall-service-swagger
+          uri: lb://mall-service
+          predicates:
+            - Path=/mall-service/swagger-ui/**,/mall-service/v3/api-docs/**
+          filters:
+            - RewritePath=/mall-service/(?<segment>.*), /$\{segment}
+
+        - id: mall-service
+          uri: lb://mall-service
+          predicates:
+            - Path=/mall-service/**
+          filters:
+            - RewritePath=/mall-service/(?<segment>.*), /$\{segment}
+
+        - id: shipment-service
+          uri: lb://shipment-service
+          predicates:
+            - Path=/shipment-service/**
+          filters:
+            - RewritePath=/shipment-service/(?<segment>.*), /$\{segment}
+
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/notification-service/**
+          filters:
+            - RewritePath=/notification-service/(?<segment>.*), /$\{segment}

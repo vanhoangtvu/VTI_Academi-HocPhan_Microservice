@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mall-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/mall-service
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+queue:
+  notification:
+    queue: notification-queue
+    exchange: notification-exchange
+    routingKey: notification-routing-key

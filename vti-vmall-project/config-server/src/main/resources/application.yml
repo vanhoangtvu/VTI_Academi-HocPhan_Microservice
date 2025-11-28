@@ -1,0 +1,11 @@
+server:
+  port: 6969
+
+spring:
+  profiles:
+    include: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: file:/home/admin/vti-vmall-project/config-server/configs
